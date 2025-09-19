@@ -5,6 +5,13 @@ import validateUser from "./middlewares/validateUser.js";
 import taskRouter from "./routes/taskRoutes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+// Fix __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -17,6 +24,11 @@ app.use(
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })
+);
+app.use(
+  "/app",
+  validateUser,
+  express.static(path.join(__dirname, "../client/dist"))
 );
 
 app.use("/auth", authRouter);
