@@ -17,6 +17,8 @@ function App() {
           credentials: "include",
         });
         if (!res.ok) {
+          let data = await res.json();
+          console.log(data);
           navigate("/");
         } else {
           setLoading(false);
