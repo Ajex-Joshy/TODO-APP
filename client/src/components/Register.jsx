@@ -6,6 +6,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -18,7 +19,13 @@ const Register = () => {
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ firstName, lastName, email, password }),
+            body: JSON.stringify({
+              firstName,
+              lastName,
+              email,
+              password,
+              confirmPassword,
+            }),
           }
         );
         const data = await res.json();
@@ -82,6 +89,15 @@ const Register = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <input
+            className="py-3 px-4 border w-full rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none"
+            type="password"
+            placeholder="Confirm Password"
+            id="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
           <input
