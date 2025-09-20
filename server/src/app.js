@@ -26,6 +26,9 @@ app.use(
   })
 );
 
+app.get("/verify", validateUser, (req, res) => {
+  res.status(200).json({ msg: "token validated", user: req.user });
+});
 app.use("/auth", authRouter);
 app.use("/task", validateUser, taskRouter);
 

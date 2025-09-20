@@ -38,7 +38,7 @@ export const login = async (req, res) => {
       secure: true,
       sameSite: "strict",
     });
-    res.redirect("/app");
+    res.redirect("https://todo-app-three-snowy-23.vercel.app/app");
   } catch (err) {
     res.json({ msg: err.message }, process.env.JWT_KEY);
   }

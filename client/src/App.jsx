@@ -1,10 +1,32 @@
 import Head from "./components/Head";
 import Task from "./components/Task";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const verifyUser = async () => {
+      try {
+        const res = await fetch("https://todo-app-bv20.onrender.com/verify", {
+          method: "GET",
+          credentials: "include",
+        });
+        if (!res.ok) {
+          navigate("/");
+        } else {
+          setLoading(false);
+        }
+      } catch (err) {
+        navigate("/");
+      }
+    };
+    verifyUser();
+  }, [navigate]);
   const intervalId = useRef();
 
   const [tasks, setTasks] = useState(
@@ -73,6 +95,10 @@ function App() {
     });
     setTasks(updatedTasks);
     toast.success("Task Updated Successfully");
+  }
+
+  if (loading) {
+    return <h1>Verifying user...</h1>;
   }
 
   return (
