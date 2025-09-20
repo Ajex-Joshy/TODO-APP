@@ -14,7 +14,7 @@ export const addTask = async (req, res) => {
     await task.save();
     res.json({ msg: "Task added successfully" });
   } catch (err) {
-    res.json({ msg: err.message });
+    res.status(400).json({ msg: err.message });
   }
 };
 
@@ -32,7 +32,7 @@ export const editTask = async (req, res) => {
     if (!task) throw new Error("Task not found");
     res.json({ msg: "Task updated successfully" });
   } catch (err) {
-    res.json({ msg: err.message });
+    res.status(400).json({ msg: err.message });
   }
 };
 
@@ -44,7 +44,7 @@ export const deleteTask = async (req, res) => {
     if (!task) throw new Error("Task not found");
     res.json({ msg: "Task deleted successfully" });
   } catch (err) {
-    res.json({ msg: err.message });
+    res.status(400).json({ msg: err.message });
   }
 };
 
@@ -60,7 +60,7 @@ export const completeTask = async (req, res) => {
     if (!task) throw new Error("Task not found");
     res.json({ msg: "Task marked completed" });
   } catch (err) {
-    res.json({ msg: err.message });
+    res.status(400).json({ msg: err.message });
   }
 };
 
@@ -89,6 +89,6 @@ export const dashboard = async (req, res) => {
       msg: "Tasks attached",
     });
   } catch (err) {
-    res.json({ msg: err.message });
+    res.status(400).json({ msg: err.message });
   }
 };

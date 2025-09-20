@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -11,16 +12,18 @@ const Login = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
+        credentials: "include",
       });
-      if (res.ok) {
+      if (!res.ok) {
         const data = await res.json();
         setError(data.msg);
         return;
       }
       const data = await res.json();
+      navigate("/app");
       console.log(data);
     } catch (err) {
-      console.log(err.message);
+      setError(err.message);
     }
   }
   return (

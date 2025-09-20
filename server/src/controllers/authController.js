@@ -20,7 +20,7 @@ export const register = async (req, res) => {
     await user.save();
     res.json({ msg: "user registered successfully" });
   } catch (err) {
-    res.json({ msg: err.message });
+    res.status(400).json({ msg: err.message });
   }
 };
 
@@ -38,9 +38,9 @@ export const login = async (req, res) => {
       secure: true,
       sameSite: "strict",
     });
-    res.redirect("https://todo-app-three-snowy-23.vercel.app/app");
+    res.json({ msg: "Login successful" });
   } catch (err) {
-    res.json({ msg: err.message }, process.env.JWT_KEY);
+    res.status(400).json({ msg: err.message }, process.env.JWT_KEY);
   }
 };
 
@@ -53,6 +53,6 @@ export const logout = (req, res) => {
     });
     res.json({ msg: "user logged out successfully" });
   } catch (err) {
-    res.json({ msg: err.message }, process.env.JWT_KEY);
+    res.status(400).json({ msg: err.message }, process.env.JWT_KEY);
   }
 };

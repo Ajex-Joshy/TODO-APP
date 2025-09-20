@@ -18,7 +18,7 @@ router.get("/app", validateUser, (req, res) => {
   try {
     res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
   } catch (err) {
-    res.json({ msg: err.message });
+    res.status(400).json({ msg: err.message });
   }
 });
 
