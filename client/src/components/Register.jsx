@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLasttName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,6 +24,7 @@ const Register = () => {
         const data = await res.json();
         if (!res.ok) {
           setError(data.msg);
+          return;
         }
         navigate("/login");
       } catch (err) {
@@ -46,7 +47,7 @@ const Register = () => {
         >
           <input
             className="py-3 px-4 border w-full rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none"
-            type="email"
+            type="text"
             placeholder="First Name"
             name=""
             id="firstName"
@@ -56,12 +57,12 @@ const Register = () => {
           />
           <input
             className="py-3 px-4 border w-full rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none"
-            type="email"
+            type="text"
             placeholder="Last Name"
             name=""
             id="lastName"
             value={lastName}
-            onChange={() => setLasttName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
             required
           />
           <input
@@ -71,7 +72,7 @@ const Register = () => {
             name=""
             id="emailId"
             value={email}
-            onChange={() => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
@@ -80,7 +81,7 @@ const Register = () => {
             placeholder="Password"
             id="password"
             value={password}
-            onChange={() => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           <input
