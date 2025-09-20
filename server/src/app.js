@@ -27,10 +27,9 @@ app.use(
 );
 
 app.use("/app", express.static(path.join(__dirname, "../../client/dist/")));
-"/app",
-  (req, res) => {
-    res.sendFile(path.join(__dirname, "../../client/dist/index.html"));
-  };
+app.get("/app", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../client/dist/index.html"));
+});
 
 app.use("/auth", authRouter);
 app.use("/task", validateUser, taskRouter);
