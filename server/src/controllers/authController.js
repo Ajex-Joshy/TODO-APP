@@ -36,11 +36,11 @@ export const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "none",
     });
     res.json({ msg: "Login successful" });
   } catch (err) {
-    res.status(400).json({ msg: err.message }, process.env.JWT_KEY);
+    res.status(400).json({ msg: err.message });
   }
 };
 
