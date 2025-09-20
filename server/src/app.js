@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(
   cors({
-    origin: "https://todo-app-three-snowy-23.vercel.app/", // React app URL
+    origin: "https://todo-app-three-snowy-23.vercel.app", // React app URL
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })
