@@ -23,7 +23,7 @@ const Head = ({ taskState: { tasks, setTasks }, viewCompleted }) => {
       <h1 className="text-4xl font-extrabold text-black text-center mb-6 drop-shadow-lg">
         ToDo App
       </h1>
-      <div className="flex justify-center">
+      <div className="flex justify-center flex-col lg:flex-row">
         <input
           className="border border-gray-300 rounded-md px-3 py-2 m-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
           type="text"

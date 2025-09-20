@@ -55,9 +55,9 @@ const Task = ({
   }
   return (
     <div
-      className={`w-10/12 ${
+      className={`w-full lg:w-10/12 ${
         dueOver && !completed ? "bg-red-200" : "bg-slate-100"
-      } shadow-md rounded-md border border-slate-200 m-4 p-2 mx-auto flex justify-between`}
+      } shadow-md rounded-md border border-slate-200 m-4 p-2 mx-auto flex flex-col lg:flex-row justify-between`}
     >
       <div className="flex flex-col">
         {isEditing ? (
@@ -78,7 +78,7 @@ const Task = ({
             defaultValue={description}
           />
         ) : (
-          <p>{description}</p>
+          <p className="text-sm lg:text-md">{description}</p>
         )}
         {isEditing ? (
           <input

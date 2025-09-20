@@ -95,7 +95,7 @@ const Register = () => {
             className="py-3 px-4 border w-full rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none"
             type="password"
             placeholder="Confirm Password"
-            id="password"
+            id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required

@@ -134,7 +134,7 @@ function App() {
       </div>
 
       <div className="flex justify-center">
-        <div className="w-7/12 bg-white rounded-xl shadow-2xl p-8 mt-20">
+        <div className="w-full lg:w-7/12 bg-white rounded-xl shadow-2xl p-8 mt-10 lg:mt-20">
           <Head taskState={{ tasks, setTasks }} viewCompleted={viewCompleted} />
           <div>
             {tasks
