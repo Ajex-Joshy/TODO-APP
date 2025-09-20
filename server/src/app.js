@@ -18,11 +18,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
+const allowedOrigins = ["https://todo-app-three-snowy-23.vercel.app"];
+
 app.use(
   cors({
-    origin: "https://todo-app-three-snowy-23.vercel.app", // React app URL
-    methods: ["GET", "POST", "PATCH", "DELETE"],
-    credentials: true,
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // for non-browser requests
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true, // <--- must be true to allow cookies
   })
 );
 
