@@ -6,10 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const intervalId = useRef();
+
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem("tasks")) || []
   );
   const [showCompleted, setShowCompleted] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);

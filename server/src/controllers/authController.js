@@ -38,7 +38,7 @@ export const login = async (req, res) => {
       secure: true,
       sameSite: "strict",
     });
-    res.json({ msg: "user logged succesfully" });
+    res.redirect("/app");
   } catch (err) {
     res.json({ msg: err.message }, process.env.JWT_KEY);
   }
