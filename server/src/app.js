@@ -20,16 +20,11 @@ app.use(cookieParser());
 app.use(cors());
 app.use(
   cors({
-    origin: "http://localhost:3000", // React app URL
+    origin: "https://todo-app-three-snowy-23.vercel.app/", // React app URL
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })
 );
-
-app.use("/app", express.static(path.join(__dirname, "../../client/dist/")));
-app.get("/app", (req, res) => {
-  res.sendFile("../../client/dist/index.html");
-});
 
 app.use("/auth", authRouter);
 app.use("/task", validateUser, taskRouter);
