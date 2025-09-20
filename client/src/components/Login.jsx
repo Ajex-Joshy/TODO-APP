@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Login = () => {
@@ -27,6 +27,16 @@ const Login = () => {
       setError(err.message);
     }
   }
+  useEffect(() => {
+    const wakeAPI = async () => {
+      try {
+        await fetch("https://todo-app-bv20.onrender.com/");
+      } catch (err) {
+        console.error("Error waking API:", err);
+      }
+    };
+    wakeAPI();
+  }, []);
   return (
     <div className="h-screen bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 flex items-center justify-center">
       <div className="w-10/12 md:w-6/12 lg:w-4/12 bg-white mx-auto p-10 rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
