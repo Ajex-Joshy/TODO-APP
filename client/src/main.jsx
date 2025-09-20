@@ -7,14 +7,15 @@ import Register from "./components/Register.jsx";
 import {
   BrowserRouter,
   RouterProvider,
-  Outlet,
   createBrowserRouter,
 } from "react-router-dom";
+import ErrorElement from "./components/ErrorElement.jsx";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
+    errorElement: <ErrorElement />,
   },
   {
     path: "/login",
