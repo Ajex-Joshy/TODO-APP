@@ -105,7 +105,7 @@ function App() {
   async function handleLogout() {
     const logout = useLogout();
     await logout();
-    navigate("/login");
+    navigate("/login", { replace: true });
   }
 
   if (loading) {

@@ -21,7 +21,7 @@ const Login = () => {
         return;
       }
       const data = await res.json();
-      navigate("/app");
+      navigate("/app", { replace: true });
       console.log(data);
     } catch (err) {
       setError(err.message);
