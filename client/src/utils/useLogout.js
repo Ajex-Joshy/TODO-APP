@@ -9,6 +9,7 @@ const useLogout = () => {
         "https://todo-app-bv20.onrender.com/auth/logout",
         {
           method: "GET",
+          credentials: "include",
         }
       );
 
