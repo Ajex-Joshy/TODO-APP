@@ -14,7 +14,7 @@ const validateUser = async (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
-    res.staus(400).json({ msg: err.message });
+    res.status(400).json({ msg: err.message });
   }
 };
 
