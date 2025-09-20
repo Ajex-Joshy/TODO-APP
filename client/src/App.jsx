@@ -8,31 +8,31 @@ import useLogout from "./utils/useLogout.js";
 
 function App() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("");
 
-  // useEffect(() => {
-  //   const verifyUser = async () => {
-  //     try {
-  //       const res = await fetch("https://todo-app-bv20.onrender.com/verify", {
-  //         method: "GET",
-  //         credentials: "include",
-  //       });
-  //       if (!res.ok) {
-  //         let data = await res.json();
-  //         console.log(data);
-  //         navigate("/");
-  //       } else {
-  //         let data = await res.json();
-  //         setUserName(data.user.firstName);
-  //         setLoading(false);
-  //       }
-  //     } catch (err) {
-  //       navigate("/");
-  //     }
-  //   };
-  //   verifyUser();
-  // }, [navigate]);
+  useEffect(() => {
+    const verifyUser = async () => {
+      try {
+        const res = await fetch("https://todo-app-bv20.onrender.com/verify", {
+          method: "GET",
+          credentials: "include",
+        });
+        if (!res.ok) {
+          let data = await res.json();
+          console.log(data);
+          navigate("/");
+        } else {
+          let data = await res.json();
+          setUserName(data.user.firstName);
+          setLoading(false);
+        }
+      } catch (err) {
+        navigate("/");
+      }
+    };
+    verifyUser();
+  }, [navigate]);
   const intervalId = useRef();
 
   const [tasks, setTasks] = useState(
