@@ -66,6 +66,7 @@ const Task = ({
             type="text"
             ref={titler}
             defaultValue={title}
+            required
           />
         ) : (
           <h2 className="font-bold text-lg text-green-700">{title}</h2>
@@ -76,6 +77,7 @@ const Task = ({
             type="text"
             ref={descriptionr}
             defaultValue={description}
+            required
           />
         ) : (
           <p className="text-sm lg:text-md">{description}</p>
@@ -86,6 +88,7 @@ const Task = ({
             type="datetime-local"
             ref={dateTimer}
             defaultValue={dateTime}
+            required
           />
         ) : (
           <>
