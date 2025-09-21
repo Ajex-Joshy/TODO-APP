@@ -47,9 +47,13 @@ function App() {
   useEffect(() => {
     intervalId.current = setInterval(() => {
       setTasks((prev) => {
-        const updated = prev.map((t) =>
-          new Date(t.dateTime) < new Date() ? { ...t, dueOver: true } : t
-        );
+        const updated = prev.map((t) => {
+          if (new Date(t.dateTime) < new Date() && !t.dueOver) {
+            toast.error(`${t.title} - due over`);
+            return { ...t, dueOver: true };
+          }
+          return t;
+        });
         const incompleted = updated.filter((t) => !t.completed);
         const completed =
           updated
