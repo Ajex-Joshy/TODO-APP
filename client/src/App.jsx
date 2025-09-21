@@ -164,6 +164,9 @@ function App() {
           <ToastContainer />
         </div>
       </div>
+      <p className="text-center text-white font-bold m-2 p-2 text-lg lg:m-4">
+        Discipline Equals Freedom
+      </p>
     </div>
   );
 }

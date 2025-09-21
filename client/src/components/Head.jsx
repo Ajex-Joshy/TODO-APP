@@ -54,6 +54,7 @@ const Head = ({ taskState: { tasks, setTasks }, viewCompleted }) => {
           ref={dateTime}
           required
           id="dateTime"
+          placeholder="date & time"
         />
         <input
           className="px-4 py-2 m-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md cursor-pointer transition duration-200"
