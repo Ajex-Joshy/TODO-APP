@@ -7,8 +7,6 @@ const Head = ({ taskState: { tasks, setTasks }, viewCompleted }) => {
   const dateTime = useRef();
 
   function handleSubmit() {
-    if (!title.current.value) {
-    }
     const task = {
       id: new Date().getTime(),
       title: title.current.value,
@@ -54,7 +52,6 @@ const Head = ({ taskState: { tasks, setTasks }, viewCompleted }) => {
           ref={dateTime}
           required
           id="dateTime"
-          placeholder="date & time"
         />
         <input
           className="px-4 py-2 m-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md cursor-pointer transition duration-200"

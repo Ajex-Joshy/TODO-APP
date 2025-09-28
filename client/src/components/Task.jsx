@@ -6,7 +6,7 @@ const Task = ({
   task: { id, title, description, dateTime, completed, dueOver },
   functions: { onDelete, onComplete, onUpdate },
 }) => {
-  const titler = useRef(title);
+  const titler = useRef();
   const descriptionr = useRef();
   const dateTimer = useRef();
   const [isEditing, setIsEditing] = useState(false);
